@@ -169,7 +169,6 @@
             </div>
             @endforeach
         </div>
-
         <div class="text-center mt-12 aos-fade-up">
             <a href="{{ route('potensi') }}" class="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-bold rounded-2xl hover:bg-primary-dark hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 Lihat Semua Potensi
@@ -180,7 +179,54 @@
     </div>
 </section>
 
-<!-- ====== PRODUK UNGGULAN ====== -->
+<!-- ====== POTENSI DESA SUDIMORO SECTION ====== -->
+@if($potensiDesa->count() > 0)
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 aos-fade-up">
+            <span class="inline-block px-4 py-2 bg-green-100 text-green-700 font-semibold text-sm rounded-full mb-4">Unggulan Desa</span>
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Potensi Desa Sudimoro</h2>
+            <p class="text-gray-500 text-lg max-w-2xl mx-auto">Kekayaan dan keunggulan yang menjadi kebanggaan Desa Sudimoro</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach($potensiDesa as $pd)
+            <div class="aos-fade-up group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+                <!-- Image -->
+                <div class="relative h-52 overflow-hidden">
+                    @if($pd->image)
+                        <img src="{{ Storage::url($pd->image) }}" alt="{{ $pd->title }}"
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    @else
+                        <div class="w-full h-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center">
+                            <svg class="w-16 h-16 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
+                            </svg>
+                        </div>
+                    @endif
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <!-- Content -->
+                <div class="p-6">
+                    <span class="inline-block px-2.5 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full mb-3">Potensi Desa</span>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors duration-200">{{ $pd->title }}</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed line-clamp-2">{{ $pd->description }}</p>
+                </div>
+            </div>
+            @endforeach
+        </div>
+
+        <div class="text-center mt-12 aos-fade-up">
+            <a href="{{ route('potensi-desa') }}" class="inline-flex items-center gap-2 px-8 py-4 bg-green-600 text-white font-bold rounded-2xl hover:bg-green-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                Selengkapnya
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+@endif
+
+
 <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 aos-fade-up">
